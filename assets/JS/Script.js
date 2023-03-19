@@ -86,3 +86,18 @@ function clockTick() {
         quizEnd()
     }
 }
+
+function saveHighscore() {
+    var initials = initials.value.trim();
+    if(initials !== "") {
+        var highscore = Json.parse(window.localStorage.getItem("highscores")) || [];
+        var newScore = {
+            score: time,
+            initials: initials
+        };
+
+        printHighScores.push(newScore);
+        window.localStorage.setItem("highscores", Json.stringify(highscore));
+        window.location.href = "highscore.html"
+    }
+}
