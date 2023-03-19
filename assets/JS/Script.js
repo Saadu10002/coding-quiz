@@ -78,3 +78,11 @@ function quizEnd() {
     question.setAttribute("class", "hide");
 
 }
+
+function clockTick() {
+    time--;
+    timeEl.textContent = time;
+    if(time <= 0) {
+        quizEnd()
+    }
+}
