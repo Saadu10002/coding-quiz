@@ -40,3 +40,41 @@ function getQuestion() {
     });
 }
 
+function questionOnclick() {
+    if (this.value !== questions[currentQuestionIndex].answer) {
+        time -= 15;
+        if(time < 0) {
+            time = 0;
+        }
+        timeEl.textContent = time;
+
+        feedBackEl.textContent = "Wrong";
+    } else {
+        feedBackEl.textContent = "correct";
+    }
+    feefBack.setAttribute("class", "feedback");
+
+    setTimeout(function() {
+        feedBackEl.setAttribute("class", "feedback hide")
+
+    },1000);
+
+    currentQuestionIndex++;
+    if(currentQuestionIndex === questions.length) {
+        quizEnd();
+    } else {
+        getQuestion();
+    }
+}
+
+function quizEnd() {
+    clearInterval(timeId);
+    var endScreenEl = document.getElementById("end-screen");
+    endScreenEl.removeAttribute("class");
+
+    var finalScoreEl = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+
+    question.setAttribute("class", "hide");
+
+}
