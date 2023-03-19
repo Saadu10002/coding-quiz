@@ -101,3 +101,13 @@ function saveHighscore() {
         window.location.href = "highscore.html"
     }
 }
+
+function checkForEnter(event){
+     if(event.key === "Enter") {
+        saveHighscore()
+     }
+}
+
+submitBtn.onClick = saveHighScore;
+startBtn.onClick = startQuiz;
+initialsEl.onKey = checkForEnter;
